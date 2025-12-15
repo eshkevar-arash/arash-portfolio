@@ -5,6 +5,13 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+* {
+    max-width: 100%;
 }
 
 body {
@@ -19,12 +26,25 @@ body {
     position: relative;
     overflow-x: hidden;
     min-height: 100vh;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* بهینه‌سازی انیمیشن برای performance بهتر */
+body,
+.header,
+.courses-table th,
+.projects-table th,
+.progress-bar span {
+    will-change: background-position;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 body::before {
@@ -41,6 +61,9 @@ body::before {
     z-index: -1;
     pointer-events: none;
     animation: float 15s ease-in-out infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 @keyframes float {
@@ -116,6 +139,9 @@ a:hover::after {
     position: relative;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    will-change: background-position;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .header::before {
@@ -900,6 +926,70 @@ html {
     .courses-table td:last-child {
         min-width: 150px;
         white-space: nowrap;
+    }
+}
+
+/* بهینه‌سازی برای موبایل - کاهش انیمیشن‌ها و بهبود performance */
+@media screen and (max-width: 768px) {
+    /* کاهش یا غیرفعال کردن انیمیشن‌های گرادیانت برای موبایل */
+    body {
+        animation: none;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        background-size: 100% 100%;
+    }
+    
+    body::before {
+        animation: none;
+    }
+    
+    .header {
+        animation: none;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        background-size: 100% 100%;
+    }
+    
+    .courses-table th,
+    .projects-table th {
+        animation: none;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        background-size: 100% 100%;
+    }
+    
+    .courses-table th::before,
+    .projects-table th::before {
+        animation: none;
+        display: none;
+    }
+    
+    .progress-bar span {
+        animation: none;
+        background: linear-gradient(90deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%);
+        background-size: 100% 100%;
+    }
+    
+    .progress-bar span::after {
+        animation: none;
+        display: none;
+    }
+    
+    /* بهبود اسکرول در موبایل */
+    html {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    body {
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+    }
+    
+    /* حذف will-change برای موبایل (صرفه‌جویی در باتری) */
+    body,
+    .header,
+    .courses-table th,
+    .projects-table th,
+    .progress-bar span,
+    body::before {
+        will-change: auto;
     }
 }
 
