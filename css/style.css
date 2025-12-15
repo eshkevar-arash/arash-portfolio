@@ -991,5 +991,79 @@ html {
     body::before {
         will-change: auto;
     }
+    
+    /* غیرفعال کردن تمام hover effects در موبایل */
+    a:hover,
+    a:hover::after {
+        color: inherit !important;
+        transform: none !important;
+        text-shadow: none !important;
+        background: inherit !important;
+        box-shadow: none !important;
+    }
+    
+    a:hover::after {
+        width: 0 !important;
+    }
+    
+    .header a:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        transform: none !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .about-me:hover,
+    .about-me:hover::before {
+        transform: none !important;
+        box-shadow: inherit !important;
+        opacity: 0 !important;
+    }
+    
+    .courses-table:hover,
+    .projects-table:hover {
+        transform: none !important;
+        box-shadow: inherit !important;
+    }
+    
+    .courses-table tbody tr:hover,
+    .projects-table tbody tr:hover {
+        background: inherit !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    .courses-table td a:hover,
+    .projects-table a:hover {
+        color: inherit !important;
+        background: inherit !important;
+        transform: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .projects:hover {
+        transform: none !important;
+        box-shadow: inherit !important;
+    }
+    
+    .socials a:hover,
+    .socials a:hover svg {
+        transform: none !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        box-shadow: none !important;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
+    }
+    
+    .footer a:hover {
+        color: inherit !important;
+        text-shadow: none !important;
+        transform: none !important;
+    }
+    
+    section.courses:hover,
+    section.learning-courses:hover {
+        background: rgba(30, 41, 59, 0.4) !important;
+        box-shadow: inherit !important;
+    }
 }
 
