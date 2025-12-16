@@ -1087,3 +1087,28 @@ body{
 @media screen and (max-width: 576px) {
 
 }
+/* ===== Disable hover & heavy effects on touch devices ===== */
+@media (hover: none) and (pointer: coarse) {
+
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .courses-table tbody tr:hover,
+    .projects-table tbody tr:hover,
+    section:hover,
+    .about-me:hover,
+    .projects:hover {
+        background: inherit !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    a:hover,
+    button:hover {
+        color: inherit;
+        background: inherit;
+    }
+}
+
