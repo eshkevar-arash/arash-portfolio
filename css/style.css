@@ -1,6 +1,7 @@
 /*========================= Base Typography & Body =========================*/
-* {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+a,
+button {
+  transition: color .2s ease, background-color .2s ease, transform .2s ease;
 }
 
 html {
@@ -1066,4 +1067,5 @@ html {
         box-shadow: inherit !important;
     }
 }
+
 
